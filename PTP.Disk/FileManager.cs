@@ -5,100 +5,82 @@ namespace PTP.Disk
 {
     public class FileManager
     {
-        private readonly string dbDiretory;
-        private readonly int blockSize;
-        private readonly bool isNew;
-        private readonly ConcurrentDictionary<string, FileStream> openFiles = new ConcurrentDictionary<string, FileStream>();
+        private readonly string _dbDirectory;
+        private readonly int _blockSize;
+        private readonly bool _isNew;
+        private readonly ConcurrentDictionary<string, FileStream> _openFiles = new();
 
-        public FileManager(string dbDiretory, int blockSize)
+        public bool IsNew() => _isNew;
+        public int BlockSize() => _blockSize;
+
+        public FileManager(string dbDirectory, int blockSize)
         {
-            this.dbDiretory = dbDiretory;
-            this.blockSize = blockSize;
+            _dbDirectory = dbDirectory;
+            _blockSize = blockSize;
 
-            if (!Directory.Exists(dbDiretory))
+            if (!Directory.Exists(dbDirectory))
             {
-                Directory.CreateDirectory(dbDiretory);
-                isNew = true;
+                Directory.CreateDirectory(dbDirectory);
+                _isNew = true;
             }
 
-            foreach (var file in Directory.GetFiles(dbDiretory, "temp."))
+            foreach (var file in Directory.GetFiles(dbDirectory, "temp*"))
             {
                 File.Delete(file);
             }
         }
 
-        private FileStream GetFile(string filename)
+        private FileStream GetFile(string FileName)
         {
-            return openFiles.GetOrAdd(filename, fn =>
+            return _openFiles.GetOrAdd(FileName, fn =>
             {
-                string fullPath = Path.Combine(dbDiretory, fn);
+                string fullPath = Path.Combine(_dbDirectory, fn);
                 return new FileStream(fullPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
             });
         }
 
-        public void Read(Block block, Page page)
+        public void Read(Block block, Page p)
         {
-
-            FileStream fileStream = GetFile(block.FileName);
-
-            lock (fileStream)
+            var file = GetFile(block.FileName);
+            lock (file)
             {
-                try
-                {
-                    fileStream.Seek(block.BlockNumber * blockSize, SeekOrigin.Begin);
-
-                    fileStream.Read(page.Contents(), 0, blockSize);
-                }
-                catch (IOException)
-                {
-                    throw new Exception("Error reading block: " + block);
-                }
+                file.Seek(block.BlockNumber * _blockSize, SeekOrigin.Begin);
+                file.Read(p.Contents(), 0, _blockSize);
             }
         }
 
-        public void Write(Block block, Page page)
+        public void Write(Block block, Page p)
         {
-            FileStream fileStream = GetFile(block.FileName);
-
-            lock (fileStream) {
-                try
-                {
-                    fileStream.Seek(block.BlockNumber * blockSize, SeekOrigin.Begin);
-
-                    fileStream.Write(page.Contents(), 0, blockSize);
-                }
-                catch (IOException)
-                {
-                    throw new Exception("Error reading block: " + block);
-                }
+            var file = GetFile(block.FileName);
+            lock (file)
+            {
+                file.Seek(block.BlockNumber * _blockSize, SeekOrigin.Begin);
+                file.Write(p.Contents(), 0, _blockSize);
+                file.Flush(true);
             }
         }
 
-        public Block Append(string fileName)
+        public Block Append(string FileName)
         {
-            int newBlockNumber = Length(fileName);
-
-            Block block = new Block(fileName, newBlockNumber);
-
-            byte[] bytes = new byte[blockSize];
-
-            FileStream fileStream = GetFile(fileName);
-
-            lock(fileStream)
+            int newblockNum = Length(FileName);
+            var block = new Block(FileName, newblockNum);
+            var file = GetFile(FileName);
+            lock (file)
             {
-                fileStream.Seek(newBlockNumber * blockSize, SeekOrigin.Begin);
-                fileStream.Write(bytes, 0, blockSize);
+                file.Seek(block.BlockNumber * _blockSize, SeekOrigin.Begin);
+                file.Write(new byte[_blockSize], 0, _blockSize);
+                file.Flush(true);
             }
-
             return block;
         }
 
-        private int Length(string fileName)
+        public int Length(string FileName)
         {
-            FileStream fileStream = GetFile(fileName);
-
-            return (int)(fileStream.Length / blockSize);
+            var file = GetFile(FileName);
+            lock (file)
+            {
+                return (int)(file.Length / _blockSize);
+            }
         }
-
     }
 }
