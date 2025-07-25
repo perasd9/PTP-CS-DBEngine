@@ -10,11 +10,13 @@ namespace PTP.Disk
         private readonly bool _isNew;
         private readonly ConcurrentDictionary<string, FileStream> _openFiles = new();
 
-        public bool IsNew() => _isNew;
-        public int BlockSize() => _blockSize;
+        public bool IsNew => _isNew;
+        public int BlockSize => _blockSize;
 
         public FileManager(string dbDirectory, int blockSize)
         {
+            dbDirectory = EnvData.EnvDirectory + dbDirectory;
+
             _dbDirectory = dbDirectory;
             _blockSize = blockSize;
 

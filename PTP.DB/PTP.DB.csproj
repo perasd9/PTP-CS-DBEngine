@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PTP.Disk.Tests\PTP.Disk.Tests.csproj" />
+    <ProjectReference Include="..\PTP.Disk\PTP.Disk.csproj" />
+  </ItemGroup>
+
 </Project>
