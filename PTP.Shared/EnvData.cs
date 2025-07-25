@@ -1,6 +1,6 @@
-﻿namespace PTP.Disk
+﻿namespace PTP.Shared
 {
-    internal class EnvData
+    public class EnvData
     {
         public static string EnvCurrentDirectory => Directory.GetCurrentDirectory();
         public static string EnvDirectoryRoot => Directory.GetDirectoryRoot(EnvCurrentDirectory);
