@@ -80,7 +80,7 @@ namespace PTP.Log
         {
             Flush();
 
-            return new LogIterator(_fileManager, _currentBlock);
+            return new LogEnumerator(_fileManager, _currentBlock);
         }
 
         private void Flush()
