@@ -17,6 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PTP.Log\PTP.Log.csproj" />
+    <ProjectReference Include="..\PTP.Shared\PTP.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
