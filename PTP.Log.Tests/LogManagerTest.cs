@@ -43,11 +43,11 @@ namespace PTP.Log.Tests
 
         private byte[] CreateLogRecord(string data, int length)
         {
-            int npos = Page.MaxLength(data.Length);
-            byte[] b = new byte[npos + sizeof(int)];
+            int maxLength = Page.MaxLength(data.Length);
+            byte[] b = new byte[maxLength + sizeof(int)];
             Page p = new Page(b);
             p.SetString(0, data);
-            p.SetInt(npos, length);
+            p.SetInt(maxLength, length);
             return b;
         }
         private void PrintLogRecords(string message)
@@ -59,10 +59,10 @@ namespace PTP.Log.Tests
             {
                 byte[] rec = iter.Current;
                 Page p = new Page(rec);
-                string s = p.GetString(0);
-                int npos = Page.MaxLength(s.Length);
-                int val = p.GetInt(npos);
-                Console.WriteLine($"[{s}, {val}]");
+                string data = p.GetString(0);
+                int npos = Page.MaxLength(data.Length);
+                int length = p.GetInt(npos);
+                Console.WriteLine($"[{data}, {length}]");
             }
 
             Console.WriteLine();

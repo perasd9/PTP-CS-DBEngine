@@ -32,11 +32,11 @@ namespace PTP.Disk
             }
         }
 
-        private FileStream GetFile(string FileName)
+        private FileStream GetFile(string fileName)
         {
-            return _openFiles.GetOrAdd(FileName, fn =>
+            return _openFiles.GetOrAdd(fileName, val =>
             {
-                string fullPath = Path.Combine(_dbDirectory, fn);
+                string fullPath = Path.Combine(_dbDirectory, val);
                 return new FileStream(fullPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
             });
         }
@@ -62,11 +62,11 @@ namespace PTP.Disk
             }
         }
 
-        public Block Append(string FileName)
+        public Block Append(string fileName)
         {
-            int newblockNum = Length(FileName);
-            var block = new Block(FileName, newblockNum);
-            var file = GetFile(FileName);
+            int newblockNum = Length(fileName);
+            var block = new Block(fileName, newblockNum);
+            var file = GetFile(fileName);
             lock (file)
             {
                 file.Seek(block.BlockNumber * _blockSize, SeekOrigin.Begin);
@@ -76,9 +76,9 @@ namespace PTP.Disk
             return block;
         }
 
-        public int Length(string FileName)
+        public int Length(string fileName)
         {
-            var file = GetFile(FileName);
+            var file = GetFile(fileName);
             lock (file)
             {
                 return (int)(file.Length / _blockSize);
