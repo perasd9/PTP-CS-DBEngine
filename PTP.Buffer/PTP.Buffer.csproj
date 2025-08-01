@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PTP.Disk\PTP.Disk.csproj" />
     <ProjectReference Include="..\PTP.Log\PTP.Log.csproj" />
+    <ProjectReference Include="..\PTP.Shared\PTP.Shared.csproj" />
   </ItemGroup>
 
 </Project>
