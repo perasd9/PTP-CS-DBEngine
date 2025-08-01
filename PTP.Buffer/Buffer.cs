@@ -10,8 +10,8 @@ namespace PTP.Buffer
         private readonly Page _contents;
         private Block _block;
         private int _pins;
-        private int _transactionNumber;
-        private int _LSN;
+        private int _transactionNumber = -1;
+        private int _LSN = -1;
 
         public Buffer(FileManager fileManager, LogManager logManager)
         {
