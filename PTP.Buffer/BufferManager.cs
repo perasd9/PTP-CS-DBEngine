@@ -10,7 +10,7 @@ namespace PTP.Buffer
 
         private List<Buffer> _bufferPool;
         private int _numAvailable;
-        private static long MAX_TIME = 10_000;
+        private static long MAX_TIME = 10_000; //time in milliseconds
 
         public BufferManager(FileManager fileManager, LogManager logManager, int numBuffs)
         {
