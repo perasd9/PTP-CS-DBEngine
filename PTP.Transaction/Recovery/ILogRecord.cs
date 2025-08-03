@@ -8,7 +8,7 @@ namespace PTP.Transaction.Recovery
 
         public int Operator();
         public int TransactionNumber();
-        public void Undo(int transactionNumber);
+        public void Undo(Transaction transaction);
 
         static ILogRecord CreateLogRecord(byte[] bytes)
         {
