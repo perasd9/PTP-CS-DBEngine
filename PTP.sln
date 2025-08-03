@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTP.Shared", "PTP.Shared\PT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTP.Buffer", "PTP.Buffer\PTP.Buffer.csproj", "{60D608EE-4536-45B7-B609-91A8C3FDB4B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTP.Transaction", "PTP.Transaction\PTP.Transaction.csproj", "{75D6FBB6-ACF1-421B-B007-F0339A5F6829}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{60D608EE-4536-45B7-B609-91A8C3FDB4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60D608EE-4536-45B7-B609-91A8C3FDB4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60D608EE-4536-45B7-B609-91A8C3FDB4B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75D6FBB6-ACF1-421B-B007-F0339A5F6829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D6FBB6-ACF1-421B-B007-F0339A5F6829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D6FBB6-ACF1-421B-B007-F0339A5F6829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D6FBB6-ACF1-421B-B007-F0339A5F6829}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
