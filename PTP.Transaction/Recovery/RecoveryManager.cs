@@ -1,4 +1,5 @@
 ﻿using PTP.Buffer;
+using PTP.Disk;
 using PTP.Log;
 
 namespace PTP.Transaction.Recovery
@@ -45,8 +46,10 @@ namespace PTP.Transaction.Recovery
 
         public int SetInt(Buffer.Buffer buffer, int offset, int newValue)
         {
+            int oldValue = buffer.Contents.GetInt(offset);
+            Block block  = buffer.Block;
 
-            return 0;
+            return SetIntRecord.WriteToLog(_logManager, _transactionNumber, block, offset, oldValue); 
         }
 
         public int SetString(Buffer.Buffer, int offset, string newValue)
