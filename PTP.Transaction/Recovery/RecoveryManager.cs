@@ -6,9 +6,9 @@ namespace PTP.Transaction.Recovery
 {
     public class RecoveryManager
     {
-        private LogManager _logManager;
-        private BufferManager _bufferManager;
-        private Transaction _transaction;
+        private readonly LogManager _logManager;
+        private readonly BufferManager _bufferManager;
+        private readonly Transaction _transaction;
         private int _transactionNumber;
 
         public RecoveryManager(LogManager logManager, BufferManager bufferManager, Transaction transaction, int transactionNumber)
