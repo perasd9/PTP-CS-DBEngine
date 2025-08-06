@@ -52,7 +52,7 @@ namespace PTP.Transaction.Recovery
             return SetIntRecord.WriteToLog(_logManager, _transactionNumber, block, offset, oldValue); 
         }
 
-        public int SetString(Buffer.Buffer, int offset, string newValue)
+        public int SetString(Buffer.Buffer buffer, int offset, string newValue)
         {
 
             return 0;
