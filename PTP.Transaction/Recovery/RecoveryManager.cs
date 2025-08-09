@@ -54,8 +54,10 @@ namespace PTP.Transaction.Recovery
 
         public int SetString(Buffer.Buffer buffer, int offset, string newValue)
         {
+            string oldValue = buffer.Contents.GetString(offset);
+            Block block = buffer.Block;
 
-            return 0;
+            return SetStringRecord.WriteToLog(_logManager, _transactionNumber, block, offset, oldValue);
         }
 
         private void DoRollback()
