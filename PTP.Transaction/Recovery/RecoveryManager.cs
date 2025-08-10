@@ -62,7 +62,18 @@ namespace PTP.Transaction.Recovery
 
         private void DoRollback()
         {
+            IEnumerator<byte[]> enumerator = _logManager.Enumerator();
 
+            while (enumerator.MoveNext())
+            {
+                byte[] bytes = enumerator.Current;
+
+                ILogRecord logRecord = ILogRecord.CreateLogRecord(bytes);
+
+                if(logRecord.TransactionNumber() == this._transactionNumber)
+                    if(logRecord.Operator() == ILogRecord.START)
+                        logRecord.Undo(_transaction);
+            }
         }
 
         private void DoRecover()
