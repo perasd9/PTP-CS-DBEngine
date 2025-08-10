@@ -78,6 +78,24 @@ namespace PTP.Transaction.Recovery
 
         private void DoRecover()
         {
+            IList<int> finishedTransactions = new List<int>();
+            IEnumerator<byte[]> enumerator = _logManager.Enumerator();
+
+            while(enumerator.MoveNext())
+            {
+                ILogRecord logRecord = ILogRecord.CreateLogRecord(enumerator.Current);
+
+                if (logRecord.Operator() == ILogRecord.CHECKPOINT)
+                    return;
+                if(logRecord.Operator() == ILogRecord.COMMIT || logRecord.Operator() == ILogRecord.ROLLBACK)
+                {
+                    finishedTransactions.Add(logRecord.TransactionNumber());
+                } 
+                else if(!finishedTransactions.Contains(logRecord.TransactionNumber()))
+                {
+                    logRecord.Undo(_transaction);
+                }
+            }
 
         }
     }
