@@ -5,10 +5,14 @@ namespace PTP.Transaction.Concurrency
 {
     public class LockTable
     {
+        //Time using to wait for resource to release lock, if this expires exception(BufferAbort) will be thrown.
         private const int MAX_TIME = 10_000; // time in milliseconds
 
-        private readonly Dictionary<Block, int> _locks = new();
+        private readonly Dictionary<Block, int> _locks = new(); //Denote which block(this is specifed item of granularity here) is locked(X or S).
 
+        /*
+         * Acquire a shared lock on the specified block. If time expires exception is thrown. Possible deadlock.
+         */
         public void SLock(Block block)
         {
             lock(this)
@@ -35,6 +39,9 @@ namespace PTP.Transaction.Concurrency
             }
         }
 
+        /*
+         * Acquire a exclusive lock on the specified block. If time expires exception is thrown. Possible deadlock.
+         */
         public void XLock(Block block)
         {
             lock(this)
@@ -58,6 +65,9 @@ namespace PTP.Transaction.Concurrency
             }
         }
 
+        /*
+         * Remove lock on the specified block.
+         */
         public void Unlock(Block block)
         {
             int value = GetLockValue(block);
@@ -72,11 +82,17 @@ namespace PTP.Transaction.Concurrency
             }
         }
 
+        /*
+         * Check if there are other shared locks on the block.
+         */
         private bool HasOtherSLocks(Block block)
         {
             return GetLockValue(block) > 1;
         }
 
+        /*
+         * Returns the lock value for the specified block, or 0 if no lock exists.
+         */
         private int GetLockValue(Block block)
         {
             if (_locks.TryGetValue(block, out int value))
@@ -87,11 +103,17 @@ namespace PTP.Transaction.Concurrency
             return 0;
         }
 
+        /*
+         * Check if waiting time exceeded MAX_TIME.
+         */
         private bool WaitingTooLong(int startTime)
         {
             return DateTime.Now.Millisecond - startTime > MAX_TIME;
         }
 
+        /*
+         * Check if exclusive lock is acquired on the block.
+         */
         private bool HasXLock(Block block)
         {
             return GetLockValue(block) < 0;
