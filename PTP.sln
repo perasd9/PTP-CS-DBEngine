@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTP.Record", "PTP.Record\PT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTP.Query", "PTP.Query\PTP.Query.csproj", "{F9A0FEFF-BC52-4B32-A006-33DF65336251}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTP.Metadata", "PTP.Metadata\PTP.Metadata.csproj", "{2B04296B-F91D-443E-A02B-E1C7C9927AD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTP.IndexData", "PTP.IndexData\PTP.IndexData.csproj", "{7B770618-2B24-4BF2-9E42-9D97037D27A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{F9A0FEFF-BC52-4B32-A006-33DF65336251}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9A0FEFF-BC52-4B32-A006-33DF65336251}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9A0FEFF-BC52-4B32-A006-33DF65336251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B04296B-F91D-443E-A02B-E1C7C9927AD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B04296B-F91D-443E-A02B-E1C7C9927AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B04296B-F91D-443E-A02B-E1C7C9927AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B04296B-F91D-443E-A02B-E1C7C9927AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B770618-2B24-4BF2-9E42-9D97037D27A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B770618-2B24-4BF2-9E42-9D97037D27A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B770618-2B24-4BF2-9E42-9D97037D27A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B770618-2B24-4BF2-9E42-9D97037D27A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
