@@ -5,6 +5,10 @@ namespace PTP.Transaction.Recovery
 {
     internal class SetIntRecord : ILogRecord
     {
+        /*
+         * After first 4B(int) for operator, second 4B(int) is transaction number, third is fileName of string length,
+         * fourth is blockPosition, fifth is blockNumber, sixth is offsetPosition, seventh is valuePosition so it's read like this.
+         */
         private int _transactionNumber, _offset;
         private int _value;
         private Block _block;
@@ -32,6 +36,11 @@ namespace PTP.Transaction.Recovery
 
         public int TransactionNumber() => _transactionNumber;
 
+        /*
+         * Undo operation for setInt is to back int value on the old one. Fristly pin page(pin is done by buffer manager to make page available in pool).
+         * SetInt is next where setInt method of transaction does properly set of old value within transaction.
+         * At the end unpin method will probably flush all in some moment and release page in pool for other pages.
+         */
         public void Undo(Transaction transaction)
         {
             transaction.Pin(_block);
@@ -39,6 +48,9 @@ namespace PTP.Transaction.Recovery
             transaction.Unpin(_block);
         }
 
+        /*
+         * Like above, offset for every value is calculated and at the end {logManager} will write that in log file and return latest LSN.
+         */
         public static int WriteToLog(LogManager logManager, int transactionNumber, Block block, int offset, int value)
         {
             int transactionPosition = sizeof(int);
