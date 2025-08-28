@@ -5,7 +5,7 @@ namespace PTP.Log.Tests
     public class LogManagerTest : IDisposable
     {
         private LogManager _logManager;
-        private string _testFolder = "\\PTP.Log.Tests\\testLog";
+        private string _testFolder = Path.Combine("PTP.Log.Tests", "testLog");
 
         public LogManagerTest()
         {

@@ -5,7 +5,7 @@
         [Fact]
         public void CanReadAndWriteStringAndInt()
         {
-            string dbName = "PTP.Disk.Tests\\testFolder";
+            string dbName = Path.Combine("PTP.Disk.Tests", "testFolder");
             if(Directory.Exists(dbName))
                 Directory.Delete(dbName, true);
 
