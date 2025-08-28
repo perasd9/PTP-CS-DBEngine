@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PTP.Disk\PTP.Disk.csproj" />
+    <ProjectReference Include="..\PTP.Query\PTP.Query.csproj" />
+    <ProjectReference Include="..\PTP.Transaction\PTP.Transaction.csproj" />
+  </ItemGroup>
+
+</Project>
