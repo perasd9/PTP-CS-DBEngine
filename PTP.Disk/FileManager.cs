@@ -25,7 +25,7 @@ namespace PTP.Disk
          */
         public FileManager(string dbDirectory, int blockSize)
         {
-            dbDirectory = EnvData.EnvDirectory + dbDirectory;
+            dbDirectory = Path.Combine(EnvData.EnvDirectory, dbDirectory);
 
             _dbDirectory = dbDirectory;
             _blockSize = blockSize;
