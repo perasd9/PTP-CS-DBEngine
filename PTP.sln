@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTP.Metadata", "PTP.Metadat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTP.IndexData", "PTP.IndexData\PTP.IndexData.csproj", "{7B770618-2B24-4BF2-9E42-9D97037D27A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTP.QueryPlan", "PTP.QueryPlan\PTP.QueryPlan.csproj", "{0F5B3BA7-392A-41C6-B760-11DAB1800B08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{7B770618-2B24-4BF2-9E42-9D97037D27A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B770618-2B24-4BF2-9E42-9D97037D27A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B770618-2B24-4BF2-9E42-9D97037D27A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F5B3BA7-392A-41C6-B760-11DAB1800B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F5B3BA7-392A-41C6-B760-11DAB1800B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F5B3BA7-392A-41C6-B760-11DAB1800B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F5B3BA7-392A-41C6-B760-11DAB1800B08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
