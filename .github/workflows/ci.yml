@@ -39,6 +39,9 @@ jobs:
       - name: Run Tests
         run: dotnet test --configuration Release --no-build --verbosity normal
 
+      - name: End SonarQube analysis
+        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
       - name: Log in to Docker Hub Container Registry
         uses: docker/login-action@v2
         with:
