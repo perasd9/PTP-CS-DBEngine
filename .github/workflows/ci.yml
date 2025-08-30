@@ -21,6 +21,15 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
+      - name: Install SonarScanner
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      - name: Build and analyze
+        run: |
+          dotnet-sonarscanner begin /k:"perasd9_PTP-CS-DBEngine" /o:"perasd9"
+          /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+
+
       - name: Restore
         run: dotnet restore
 
