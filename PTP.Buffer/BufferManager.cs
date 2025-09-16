@@ -22,7 +22,7 @@ namespace PTP.Buffer
             this._numAvailable = numBuffs;
 
             for (int i = 0; i < numBuffs; i++)
-                this._bufferPool[i] = new Buffer(fileManager, logManager);
+                this._bufferPool.Add(new Buffer(fileManager, logManager));
         }
 
         /*
