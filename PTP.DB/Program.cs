@@ -1,4 +1,5 @@
-﻿using PTP.Disk.Tests;
+﻿using PTP.Query;
+using PTP.Server;
 
 namespace PTP.DB
 {
@@ -6,11 +7,33 @@ namespace PTP.DB
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-            FileManagerTest fileManager = new FileManagerTest();
+            Console.WriteLine("REPL ---------------------(type 'exit' to quit)");
 
+            while (true)
+            {
+                Console.Write("> ");
+                string input = Console.ReadLine();
 
-            fileManager.CanReadAndWriteStringAndInt();
+                if (input == null) continue;
+
+                input = input.Trim();
+
+                if (input.ToLower() == "exit")
+                    break;
+
+                string output = Evaluate(input);
+
+                Console.WriteLine(output);
+            }
+        }
+
+        private static string Evaluate(string input)
+        {
+            PTPDB db = new PTPDB("ptpdb.db");
+
+            IPlan plan = db.planner().CreatePlan(input, db.NewTx());
+
+            return plan.ToString();
         }
     }
 }
