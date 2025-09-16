@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PTP.Disk.Tests\PTP.Disk.Tests.csproj" />
-    <ProjectReference Include="..\PTP.Disk\PTP.Disk.csproj" />
+    <ProjectReference Include="..\PTP.Server\PTP.Server.csproj" />
   </ItemGroup>
 
 </Project>
