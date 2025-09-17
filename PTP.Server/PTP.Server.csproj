@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PTP.Buffer\PTP.Buffer.csproj" />
+    <ProjectReference Include="..\PTP.Disk\PTP.Disk.csproj" />
+    <ProjectReference Include="..\PTP.Metadata\PTP.Metadata.csproj" />
+    <ProjectReference Include="..\PTP.QueryPlan\PTP.QueryPlan.csproj" />
+  </ItemGroup>
+
+</Project>
