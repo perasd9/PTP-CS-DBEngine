@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PTP.Metadata\PTP.Metadata.csproj" />
+    <ProjectReference Include="..\PTP.Parse\PTP.Parse.csproj" />
     <ProjectReference Include="..\PTP.Query\PTP.Query.csproj" />
+    <ProjectReference Include="..\PTP.Record\PTP.Record.csproj" />
+    <ProjectReference Include="..\PTP.Transaction\PTP.Transaction.csproj" />
   </ItemGroup>
 
 </Project>
