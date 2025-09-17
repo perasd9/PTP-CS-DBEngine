@@ -115,7 +115,7 @@ namespace PTP.Metadata
             schema.AddIntField("block");
             schema.AddIntField("id");
 
-            if(_indexLayout.Schema.Type(_fieldName) == (int)FieldType.INT)
+            if(_tableSchema.Type(_fieldName) == (int)FieldType.INT)
             {
                 schema.AddIntField("dataval");
             }
