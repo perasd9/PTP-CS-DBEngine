@@ -12,8 +12,13 @@
             _tableManager = new TableManager(isNew, transaction);
             _statisticManager = new StatisticManager(_tableManager, transaction);
             _viewManager = new ViewManager(isNew, _tableManager, transaction);
-            _indexManager = new IndexManager(isNew, _tableManager, transaction);
+            _indexManager = new IndexManager(isNew, _tableManager, _statisticManager, transaction);
 
         }
+
+        public TableManager TableManager { get => _tableManager; set => _tableManager = value; }
+        public StatisticManager StatisticManager { get => _statisticManager; set => _statisticManager = value; }
+        public ViewManager ViewManager { get => _viewManager; set => _viewManager = value; }
+        public IndexManager IndexManager { get => _indexManager; set => _indexManager = value; }
     }
 }
