@@ -31,7 +31,7 @@ namespace PTP.Metadata
                     _stats.Add(tableName, info);
                 }
 
-                return info; 
+                return info!; 
             }
         }
 
