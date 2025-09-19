@@ -25,6 +25,7 @@ namespace PTP.Metadata
             Layout layout = _tableManager.GetLayout("viewcat", transaction);
             TableScan tableScan = new TableScan(transaction, layout, "viewcat");
 
+            tableScan.Insert();
             tableScan.SetString("viewname", viewName);
             tableScan.SetString("viewdef", viewDefiniton);
 
@@ -33,7 +34,7 @@ namespace PTP.Metadata
 
         public string GetViewDefinition(string viewName, Transaction.Transaction transaction)
         {
-            string result = null;
+            string result = null!;
 
             Layout layout = _tableManager.GetLayout("viewcat", transaction);
 
@@ -50,7 +51,7 @@ namespace PTP.Metadata
 
             tableScan.Close();
 
-            return result;
+            return result!;
         }
     }
 }
