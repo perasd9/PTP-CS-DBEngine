@@ -112,7 +112,7 @@ namespace PTP.Buffer
                 buff = this.FindUnpinnedBuffer();
 
                 if(buff is null)
-                    return null;
+                    return null!;
 
                 buff.AssignToBlock(block);
             }
@@ -139,7 +139,7 @@ namespace PTP.Buffer
                 if (!buffer.IsPinned)
                     return buffer;
 
-            return null;
+            return null!;
         }
 
         /*
@@ -155,7 +155,7 @@ namespace PTP.Buffer
                     return buffer;
             }
 
-            return null;
+            return null!;
         }
     }
 }
