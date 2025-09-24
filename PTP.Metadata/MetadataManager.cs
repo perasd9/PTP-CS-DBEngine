@@ -10,8 +10,8 @@
         public MetadataManager(bool isNew, Transaction.Transaction transaction)
         {
             _tableManager = new TableManager(isNew, transaction);
-            _statisticManager = new StatisticManager(_tableManager, transaction);
             _viewManager = new ViewManager(isNew, _tableManager, transaction);
+            _statisticManager = new StatisticManager(_tableManager, transaction);
             _indexManager = new IndexManager(isNew, _tableManager, _statisticManager, transaction);
 
         }
