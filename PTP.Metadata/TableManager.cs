@@ -82,14 +82,14 @@ namespace PTP.Metadata
 
             while (fieldCatalog.Next())
             {
-                if(fieldCatalog.GetString("tblName") == tableName)
+                if(fieldCatalog.GetString("tblname") == tableName)
                 {
                     string fieldName = fieldCatalog.GetString("fldname");
                     int fieldType = fieldCatalog.GetInt("type");
                     int fieldLength = fieldCatalog.GetInt("length");
                     int fieldOffset = fieldCatalog.GetInt("offset");
                     schema.AddField(fieldName, fieldType, fieldLength);
-                    offsets.Add(fieldName, fieldOffset);
+                    offsets[fieldName] = fieldOffset;
                 }
             }
 
