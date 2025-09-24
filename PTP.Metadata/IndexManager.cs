@@ -39,25 +39,24 @@ namespace PTP.Metadata
             tableScan.Close();
         }
 
- //       public Map<String, IndexInfo> getIndexInfo(String tblname,
- //Transaction tx)
- //       {
- //           Map<String, IndexInfo> result = new HashMap<String, IndexInfo>();
- //           TableScan ts = new TableScan(tx, "idxcat", layout);
- //           while (ts.next())
- //               if (ts.getString("tablename").equals(tblname))
- //               {
- //                   String idxname = ts.getString("indexname");
- //                   String fldname = ts.getString("fieldname");
- //                   Layout tblLayout = tblmgr.getLayout(tblname, tx);
- //                   StatInfo tblsi = statmgr.getStatInfo(tblname, tbllayout, tx);
- //                   IndexInfo ii = new IndexInfo(idxname, fldname,
- //                   tblLayout.schema(), tx, tblsi);
- //                   result.put(fldname, ii);
- //               }
- //           ts.close();
- //           return result;
- //       }
+        public Dictionary<string, IndexInfo> GetIndexInfo(string tblname, Transaction.Transaction tx)
+        {
+            Dictionary<string, IndexInfo> result = new Dictionary<string, IndexInfo>();
+            //TableScan ts = new TableScan(tx, "idxcat", layout);
+            //while (ts.next())
+            //    if (ts.getString("tablename").equals(tblname))
+            //    {
+            //        String idxname = ts.getString("indexname");
+            //        String fldname = ts.getString("fieldname");
+            //        Layout tblLayout = tblmgr.getLayout(tblname, tx);
+            //        StatInfo tblsi = statmgr.getStatInfo(tblname, tbllayout, tx);
+            //        IndexInfo ii = new IndexInfo(idxname, fldname,
+            //        tblLayout.schema(), tx, tblsi);
+            //        result.put(fldname, ii);
+            //    }
+            //ts.close();
+            return result;
+        }
     }
 
     public class IndexInfo
