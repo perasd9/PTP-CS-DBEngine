@@ -5,8 +5,8 @@ namespace PTP.Query
 {
     public class Expression
     {
-        private Constant _value = null;
-        private string _fieldName = null;
+        private Constant _value = null!;
+        private string _fieldName = null!;
 
         public Expression(Constant value)
         {
