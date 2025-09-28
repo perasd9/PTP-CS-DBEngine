@@ -54,7 +54,7 @@ namespace PTP.Query
             }
 
             if(result._terms.Count == 0)
-                return null;
+                return null!;
             else
 
                 return result;
@@ -75,7 +75,7 @@ namespace PTP.Query
             }
 
             if(result._terms.Count == 0)
-                return null;
+                return null!;
             else
                 return result;
         }
@@ -89,7 +89,7 @@ namespace PTP.Query
                     return c;
             }
 
-            return null;
+            return null!;
         }
 
         public string EquatesWithField(string fieldName)
@@ -100,7 +100,7 @@ namespace PTP.Query
                 if(s != null)
                     return s;
             }
-            return null;
+            return null!;
         }
 
         public string ToString()
