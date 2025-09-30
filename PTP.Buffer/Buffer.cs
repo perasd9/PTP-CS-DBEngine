@@ -38,7 +38,7 @@ namespace PTP.Buffer
         {
             this._transactionNumber = transactionNumber;
 
-            if (this._LSN >= 0) this._LSN = LSN;
+            if (LSN >= 0) this._LSN = LSN;
         }
 
         /*
