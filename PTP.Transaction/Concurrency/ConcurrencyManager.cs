@@ -28,7 +28,7 @@ namespace PTP.Transaction.Concurrency
             {
                 SLock(block);
                 _lockTable.XLock(block);
-                _locks.Add(block, "X");
+                _locks[block] = "X";
             }
         }
 
